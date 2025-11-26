@@ -5,7 +5,9 @@ import { renderizarSuperHeroe, renderizarListaSuperHeroes } from '../views/respo
 // Controlador para mostrar el formulario de agregar superhéroe
 export async function mostrarFormularioAgregarController(req, res) {
     try {
-        res.render('addSuperhero');
+        res.render('addSuperhero', {
+            title: 'Agregar superheroe'
+        });
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al cargar el formulario', error: error.message });
     }
@@ -21,7 +23,7 @@ export async function mostrarFormularioEditarController(req, res) {
             return res.status(404).send({ mensaje: 'Superhéroe no encontrado' });
         }
 
-        res.render('editSuperhero', { superheroe });
+        res.render('editSuperhero', { superheroe, title: 'editar superheroe' });
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al cargar el formulario de edición', error: error.message });
     }
@@ -53,7 +55,7 @@ export async function mostrarMenu(req, res) {
     try {
         const superheroes = await obtenerTodosLosSuperHeroes();
 
-        return res.render('dashboard', { superheroes });
+        return res.render('dashboard', { superheroes, title: 'Lista de superheroes' });
 
     }catch (error) {
         res.status(500).send({ mensaje: 'Error al obtener los superhéroes', error: error.message });

@@ -1,5 +1,6 @@
 import express from 'express';
 
+
 import { 
     ObtenerSuperHeroePorIdController,
     buscarSuperHeroesPorAtributoController, 
@@ -34,6 +35,7 @@ router.get('/heroes/editar/:id', mostrarFormularioEditarController);
 router.get('/menu', mostrarMenu);
 
 
+
 // ====================
 // RUTAS DE API
 // ====================
@@ -50,5 +52,9 @@ router.put('/actualizarHeroe/:id', validarActualizarSuperHeroe, handleValidation
 // Rutas DELETE
 router.delete('/eliminarSuperID/:id', validarId, handleValidationErrors, eliminarSuperPorIdController);
 router.delete('/eliminarSuperNombre/:nombreSuperHeroe', validarNombre, handleValidationErrors, eliminarSuperPorNombreController);
+
+// ==============================================
+
+
 
 export default router;
